@@ -1,0 +1,37 @@
+
+// FontAwesome override file //
+// -----------------------------------------------//
+
+@import "font-awesome/fontawesome";
+@import "font-awesome/regular";
+@import "font-awesome/solid";
+@import "font-awesome/brands";
+@import "font-awesome/duotone";
+@import "font-awesome/light";
+
+// Over-ride the FontAwesome filepath to use our own.
+@fa-font-path: "../../../fonts/font-awesome";
+
+
+// Custom mixin to easily reference the icon to use in the CSS, directly using the FontAwesome variable.
+// E.g use: .fa-icon(ICON NAME); in the CSS.
+.fa-icon(@icon, @pseudo: before) {
+    @icon2: "fa-var-@{icon}";
+    @pseudo-selector: ~":@{pseudo}";
+
+    &@{pseudo-selector} {
+        .fa();
+        content: @@icon2;
+    }
+}   
+
+
+// .fa-icon-strict: Use this for directly applying the content to an element (i.e not a pseudo)
+.fa-icon-strict(@icon) {
+    @icon2: "fa-var-@{icon}";
+    content: @@icon2;
+}
+
+
+
+//.fa-icon(eye, @pseudo: after);
